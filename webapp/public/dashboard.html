@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Nest - Dashboard</title>
+    <!-- Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="scripts/firebase-config.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Smart Nest</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#" id="logout-link">Logout</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main id="dashboard" style="display: none;">
+        <div class="container">
+            <h1>Smart Nest Dashboard</h1>
+            <div id="user-info">
+                <p>Welcome, <span id="user-email"></span></p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="sensor-readings">
+                    <h2>Current Readings</h2>
+                    <div class="cards">
+                        <!-- Temperature -->
+                        <div class="card">
+                            <p><i class="fas fa-thermometer-half" style="color:#059e8a;"></i> TEMPERATURE</p>
+                            <p><span class="reading"><span id="temp"></span> &deg;C</span></p>
+                        </div>
+                        <!-- Humidity -->
+                        <div class="card">
+                            <p><i class="fas fa-tint" style="color:#00add6;"></i> HUMIDITY</p>
+                            <p><span class="reading"><span id="hum"></span> &percnt;</span></p>
+                        </div>
+                        <!-- Pressure -->
+                        <div class="card">
+                            <p><i class="fas fa-angle-double-down" style="color:#e1e437;"></i> PRESSURE</p>
+                            <p><span class="reading"><span id="pres"></span> hPa</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="device-control">
+                    <h2>Device Control</h2>
+                    <label class="switch">
+                        <input type="checkbox" id="device-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Device Status: <span id="device-status">Loading...</span></p>
+                </div>
+                <div class="historical-data">
+                    <h2>Historical Data</h2>
+                    <canvas id="sensorChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/nav.js"></script>
+</body>
+</html>
